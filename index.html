@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket Machine in JavaScript</title>
+    <meta name="author" content="Krystian Konecki">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <h2 class="main__title">Ticket Machine used in public transport in Cracow</h1>
+                <div class="main__translation">
+                    <button class="main__translation__item main__translation--pl">PL</button>
+                    <button class="main__translation__item main__translation--eng">ENG</button>
+                </div>
+        </div>
+        <section class="tickets">
+            <h2 class="tickets__title">Choose tickets:</h2>
+            <input type="image" class="tickets__image" data-ticketId="20-cheap" alt="Ticket 20 minutes cheap"
+                src="images/20 - cheap.png">
+            <input type="image" class="tickets__image" data-ticketId="20-normal" alt="Ticket 20 minutes normal"
+                src="images/20 - nomal.png">
+            <input type="image" class="tickets__image" data-ticketId="50-cheap" alt="Ticket 50 minutes cheap"
+                src="images/50 - cheap.png">
+            <input type="image" class="tickets__image" data-ticketId="50-normal" alt="Ticket 50 minutes normal"
+                src="images/50 - normal.png">
+            <input type="image" class="tickets__image" data-ticketId="90-cheap" alt="Ticket 90 minutes cheap"
+                src="images/90 - cheap.png">
+            <input type="image" class="tickets__image" data-ticketId="90-normal" alt="Ticket 90 minutes normal"
+                src="images/90 - normal.png">
+            <input type="image" class="tickets__image" data-ticketId="24h-cheap" alt="Ticket 24 hours cheap"
+                src="images/24h - cheap.png">
+            <input type="image" class="tickets__image" data-ticketId="24h-normal" alt="Ticket 24 hours normal"
+                src="images/24h - normal.png">
+            <input type="image" class="tickets__image" data-ticketId="48h-cheap" alt="Ticket 48 hours cheap"
+                src="images/48h - cheap.png">
+            <input type="image" class="tickets__image" data-ticketId="48h-normal" alt="Ticket 48 hours normal"
+                src="images/48h - normal.png">
+            <input type="image" class="tickets__image" data-ticketId="family" alt="Ticket for family"
+                src="images/family.png">
+        </section>
+        <section class="status">
+            <h2 class="status__title">Ticket Machine status</h2>
+            <div class="status__chart"></div>
+            <button class="status__button status__button--main">Show status</button>
+            <button class="status__button status__button--added">Show status added</button>
+        </section>
+        <section class="machine">
+            <h2 class="machine__title">Choose: </h2>
+            <div class="machine__input"></div>
+            <div class="machine__wrapper">
+                <button class="machine__button" data-name="delete">Delete</button>
+                <button class="machine__button" data-name="clear">Clear</button>
+                <button class="machine__button" data-name="pay">Pay</button>
+                <button class="machine__button" data-name="refund">Refund</button>
+            </div>
+        </section>
+        <section class="money">
+            <h2 class="money__title">What coins do you want to add: </h2>
+            <form class="money__wrapper" method="post">
+                <p class="money__item">
+                    <label for="10gr" class="money__item__label">0.10 gr</label>
+                    <input type="text" class="money__item__input" id="10gr" placeholder="Amount of coins">
+                </p>
+                <p class="money__item">
+                    <label for="20gr" class="money__item__label">0.20 gr</label>
+                    <input type="text" class="money__item__input" id="20gr" placeholder="Amount of coins">
+                </p>
+                <p class="money__item">
+                    <label for="50gr" class="money__item__label">0.50 gr</label>
+                    <input type="text" class="money__item__input" id="50gr" placeholder="Amount of coins">
+                </p>
+                <p class="money__item">
+                    <label for="1zl" class="money__item__label">1 zł</label>
+                    <input type="text" class="money__item__input" id="1zl" placeholder="Amount of coins">
+                </p>
+                <p class="money__item">
+                    <label for="2zl" class="money__item__label">2 zł</label>
+                    <input type="text" class="money__item__input" id="2zl" placeholder="Amount of coins">
+                </p>
+                <p class="money__item">
+                    <label for="5zl" class="money__item__label">5 zł</label>
+                    <input type="text" class="money__item__input" id="5zl" placeholder="Amount of coins">
+                </p>
+            </form>
+            <button class="money__button">Deposit</button>
+        </section>
+    </div>
+    <script src="js/Machine.js"></script>
+</body>
+
+</html>
