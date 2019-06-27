@@ -1,0 +1,37 @@
+.money
+    flex-basis: 100%
+    background-color: pink
+    text-align: center
+    border: 1px solid black
+    border-top: none
+    &__title
+        font-size: 18px
+        font-weight: normal
+        text-align: center
+        margin: 10px
+    &__wrapper
+        display: flex
+        flex-direction: column
+        .money__item
+            width: 80%
+            flex-basis: 30px
+            margin: 0 auto 10px auto
+            border: 1px solid black
+            display: flex
+            flex-direction: row
+            &__label
+                flex-basis: 30%
+                text-align: center
+                line-height: 30px
+            &__input
+                flex-basis: 70%
+                border: none
+                &::placeholder
+                    padding: 5px
+    &__button
+        text-align: center
+        padding: 5px
+        margin-bottom: 10px
+        border: 1px solid white
+        color: white
+        background-color: black
