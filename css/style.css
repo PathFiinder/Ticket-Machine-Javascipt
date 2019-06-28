@@ -7,6 +7,7 @@
 
 .wrapper {
   max-width: 1200px;
+  min-width: 300px;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif;
   display: -webkit-box;
@@ -156,8 +157,30 @@
 
 .machine__input {
   height: 300px;
-  background-color: blue;
+  overflow: hidden;
+  overflow: auto;
+  background-color: white;
   margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.machine__input__item {
+  width: 96%;
+  border: 1px solid black;
+  margin: 5px auto;
+}
+
+.machine__input__item .input__item__content {
+  font-size: 18px;
+}
+
+.machine__input__item .input__item__content--bold {
+  font-size: 15px;
+}
+
+.machine__input__item--active {
+  background-color: blue;
+  color: white;
 }
 
 .machine__wrapper {

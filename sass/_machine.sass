@@ -10,8 +10,22 @@
         margin: 10px
     &__input
         height: 300px
-        background-color: blue 
+        overflow: hidden
+        overflow: auto
+        background-color: white
         margin-bottom: 10px
+        border: 1px solid black
+        &__item
+            width: 96%
+            border: 1px solid black
+            margin: 5px auto
+            .input__item__content
+                font-size: 18px
+                &--bold
+                    font-size: 15px
+        &__item--active
+            background-color: blue    
+            color: white     
     &__wrapper
         display: flex
         flex-direction: row
