@@ -1,0 +1,87 @@
+@media (min-width: 568px)
+    .tickets
+        &__items
+            &__image
+                width: 33.33%
+                padding: 5px
+                &--penultimate-child
+                    margin: 0 auto
+
+@media (min-width: 736px)
+    .tickets
+        &__items
+            &__image
+                height: 100px
+               
+@media (min-width: 1024px)
+    .tickets
+        &__items
+            &__image
+                width: 25%
+                &--penultimate-child,&--last-child
+                    margin: 0
+
+@media (min-width: 1200px)
+
+        .wrapper  
+            min-height: 100vh
+            overflow: hidden
+            .main
+                height: 4vh
+                &__translation
+                    position: absolute
+                    top: 0
+                    right: 50px
+                    width: 10%
+
+            .tickets
+                flex-basis: 50%
+                height: 48vh
+                border-right: none 
+                &__items
+                    &__image
+                        &--penultimate-child,&--last-child,&:nth-of-type(9)
+                            margin: 0 auto
+
+            .status
+                flex-basis: 50%
+                height: 48vh
+                &__chart
+                    width: 80%
+                    margin: 0 auto
+                    height: 70%
+                &__button
+                    &--main
+                        left: 5%
+                    &--added    
+                        right: 5%
+
+            .machine
+                flex-basis: 50%
+                position: relative
+                border-right: none 
+                height: 48vh
+                overflow: hidden
+                &__input
+                    width: 50%
+                    margin-left: 50px
+                    margin-top: 20px
+                    height: 80%
+                &__wrapper
+                    position: absolute
+                    top: 50%
+                    right: 160px
+                    transform: translateY(-50%)
+                    flex-direction: column
+                    .machine__button  
+                        padding: 10px
+
+            .money
+                flex-basis: 50%
+                height: 48vh
+                overflow: hidden
+                &__wrapper
+                    margin: 25px 0px 5px 0
+                &__button
+                    padding: 10px
+                    margin-bottom: 0
