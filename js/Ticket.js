@@ -4,8 +4,8 @@ class Ticket {
         this.value = value;
     }
 
-    addChosenTickets(arr,id,name,value,ifChecked){
-        arr.push({id: id,name: name,value: value, ifChecked: ifChecked});
+    addChosenTickets(arr,id,name,value){
+        arr.push({id: id,name: name,value: value});
     }
 
 

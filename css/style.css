@@ -188,6 +188,14 @@
   color: white;
 }
 
+.machine__ticket-value {
+  position: absolute;
+}
+
+.machine__money-added {
+  position: absolute;
+}
+
 .machine__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -349,6 +357,14 @@
     margin-left: 50px;
     margin-top: 20px;
     height: 80%;
+  }
+  .wrapper .machine__money-added {
+    bottom: 14%;
+    left: 62%;
+  }
+  .wrapper .machine__ticket-value {
+    bottom: 20%;
+    left: 62%;
   }
   .wrapper .machine__wrapper {
     position: absolute;
