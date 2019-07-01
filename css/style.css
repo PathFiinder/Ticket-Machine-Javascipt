@@ -119,8 +119,13 @@
 
 .status__chart {
   height: 300px;
-  background-color: red;
+  overflow: hidden;
+  width: 100px;
   margin-bottom: 10px;
+}
+
+.status__chart .myChart {
+  width: 100%;
 }
 
 .status__button {
@@ -206,7 +211,6 @@
 .money {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
-  background-color: pink;
   text-align: center;
   border: 1px solid black;
   border-top: none;
@@ -255,22 +259,8 @@
   -ms-flex-preferred-size: 70%;
       flex-basis: 70%;
   border: none;
-}
-
-.money__wrapper .money__item__input::-webkit-input-placeholder {
-  padding: 5px;
-}
-
-.money__wrapper .money__item__input:-ms-input-placeholder {
-  padding: 5px;
-}
-
-.money__wrapper .money__item__input::-ms-input-placeholder {
-  padding: 5px;
-}
-
-.money__wrapper .money__item__input::placeholder {
-  padding: 5px;
+  border-left: 1px solid black;
+  padding: 10px;
 }
 
 .money__button {

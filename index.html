@@ -17,40 +17,41 @@
             <h2 class="main__title">Ticket Machine used in public transport in Cracow</h2>
             <div class="main__translation">
                 <button
-                    class="main__translation__item main__translation__item--active main__translation--pl">PL</button>
-                <button class="main__translation__item main__translation--eng">ENG</button>
+                    class="main__translation__item  main__translation--pl">PL</button>
+                <button class="main__translation__item main__translation__item--active main__translation--eng">ENG</button>
             </div>
         </div>
         <section class="tickets">
             <h2 class="tickets__title">Choose tickets:</h2>
             <div class="tickets__items">
-                <input type="image" class="tickets__items__image" data-ticketId="20-cheap" data-value ="1.40" alt="Ticket 20 minutes cheap"
-                    src="images/20-cheap.png">
-                <input type="image" class="tickets__items__image" data-ticketId="20-normal" data-value ="3.40"alt="Ticket 20 minutes normal"
-                    src="images/20-nomal.png">
-                <input type="image" class="tickets__items__image" data-ticketId="50-cheap" data-value ="2.30" alt="Ticket 50 minutes cheap"
-                    src="images/50-cheap.png">
-                <input type="image" class="tickets__items__image" data-ticketId="50-normal" data-value ="4.60" alt="Ticket 50 minutes normal"
-                    src="images/50-normal.png">
-                <input type="image" class="tickets__items__image" data-ticketId="90-cheap" data-value ="3.00" alt="Ticket 90 minutes cheap"
-                    src="images/90-cheap.png">
-                <input type="image" class="tickets__items__image" data-ticketId="90-normal" data-value ="6.00" alt="Ticket 90 minutes normal"
-                    src="images/90-normal.png">
-                <input type="image" class="tickets__items__image" data-ticketId="24h-cheap" data-value ="10.00" alt="Ticket 24 hours cheap"
-                    src="images/24h-cheap.png">
-                <input type="image" class="tickets__items__image" data-ticketId="24h-normal" data-value ="20.00" alt="Ticket 24 hours normal"
-                    src="images/24h-normal.png">
-                <input type="image" class="tickets__items__image" data-ticketId="48h-cheap" data-value ="14.00" alt="Ticket 48 hours cheap"
-                    src="images/48h-cheap.png">
-                <input type="image" class="tickets__items__image tickets__items__image--penultimate-child" data-ticketId="48h-normal" data-value ="28.00" alt="Ticket 48 hours normal"
+                <input type="image" class="tickets__items__image" data-ticketId="20-cheap" data-value="1.40"
+                    alt="Ticket 20 minutes cheap" src="images/20-cheap.png">
+                <input type="image" class="tickets__items__image" data-ticketId="20-normal" data-value="3.40"
+                    alt="Ticket 20 minutes normal" src="images/20-nomal.png">
+                <input type="image" class="tickets__items__image" data-ticketId="50-cheap" data-value="2.30"
+                    alt="Ticket 50 minutes cheap" src="images/50-cheap.png">
+                <input type="image" class="tickets__items__image" data-ticketId="50-normal" data-value="4.60"
+                    alt="Ticket 50 minutes normal" src="images/50-normal.png">
+                <input type="image" class="tickets__items__image" data-ticketId="90-cheap" data-value="3.00"
+                    alt="Ticket 90 minutes cheap" src="images/90-cheap.png">
+                <input type="image" class="tickets__items__image" data-ticketId="90-normal" data-value="6.00"
+                    alt="Ticket 90 minutes normal" src="images/90-normal.png">
+                <input type="image" class="tickets__items__image" data-ticketId="24h-cheap" data-value="10.00"
+                    alt="Ticket 24 hours cheap" src="images/24h-cheap.png">
+                <input type="image" class="tickets__items__image" data-ticketId="24h-normal" data-value="20.00"
+                    alt="Ticket 24 hours normal" src="images/24h-normal.png">
+                <input type="image" class="tickets__items__image" data-ticketId="48h-cheap" data-value="14.00"
+                    alt="Ticket 48 hours cheap" src="images/48h-cheap.png">
+                <input type="image" class="tickets__items__image tickets__items__image--penultimate-child"
+                    data-ticketId="48h-normal" data-value="28.00" alt="Ticket 48 hours normal"
                     src="images/48h-normal.png">
-                <input type="image" class="tickets__items__image tickets__items__image--last-child" data-ticketId="family" data-value ="16.00" alt="Ticket for family"
-                    src="images/family.png">
+                <input type="image" class="tickets__items__image tickets__items__image--last-child"
+                    data-ticketId="family" data-value="16.00" alt="Ticket for family" src="images/family.png">
             </div>
         </section>
         <section class="status">
             <h2 class="status__title">Ticket Machine status</h2>
-            <div class="status__chart"></div>
+            <div class="status__chart"><canvas id="myChart"></canvas></div>
             <button class="status__button status__button--main">Show status</button>
             <button class="status__button status__button--added">Show status added</button>
         </section>
@@ -96,6 +97,8 @@
         </section>
     </div>
     <script type="module" src="js/Machine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"
+        integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
 </body>
 
 </html>
