@@ -14,7 +14,8 @@ class Machine {
         this.ticketsValue = document.querySelector('.machine__ticket-value');
         this.payButton = document.querySelector('[data-name = "pay"]')
         this.refundButton = document.querySelector('[data-name = "refund"]')
-        this.showStatusButton = document.querySelector('.status__button--main');
+        this.showStatusButton = document.querySelector('.status__button--added');
+        this.statusOfMachine = document.querySelector('.status__added-money');
 
         this.id = 0;
         this.ifAdded = false
@@ -63,6 +64,7 @@ class Machine {
         this.refundMoney();
         this.chartPie();
         this.showStatus();
+        this.statusMachine();
     }
 
     addTicket() {
@@ -74,7 +76,7 @@ class Machine {
             ticket.addChosenTickets(this.chosenTickets, this.id, ticketName, ticketValue);
 
             this.inputTicket(ticketName, ticketValue);
-            this.totalMoneyToPay += Number(ticketValue);
+            this.totalMoneyToPay += Number(Number(ticketValue).toFixed(2));
             this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
             this.id++;
         })
@@ -188,8 +190,11 @@ class Machine {
             this.NumberTab.push(element.number);
         })
 
-        PieChart.drawChart(this.NumberTab[0], this.NumberTab[1], this.NumberTab[2], this.NumberTab[3], this.NumberTab[4], this.NumberTab[5])
-        //console.log(this.NumberTab)
+        PieChart.drawChart(this.NumberTab[0], this.NumberTab[1], this.NumberTab[2], this.NumberTab[3], this.NumberTab[4], this.NumberTab[5]);
+        
+        const money = new Money();
+        this.totalMoney = money.computeValue(this.startMoney);
+        this.statusMachine();
     }
 
     addMoney() {
@@ -225,9 +230,19 @@ class Machine {
 
     showStatus() {
         this.showStatusButton.addEventListener('click', () => {
-            console.log(this.moneyAdded)
-            console.log(this.startMoney);
+            let txt = `Status added money:
+            0.10gr:  ${this.moneyAdded[0].number},
+            0.20gr:  ${this.moneyAdded[1].number},
+            0.50gr:  ${this.moneyAdded[2].number},
+            1.00zł:  ${this.moneyAdded[3].number},
+            2.00zł:  ${this.moneyAdded[4].number},
+            5.00zł:  ${this.moneyAdded[5].number},` 
+            alert(txt)
         })
+    }
+
+    statusMachine(){
+        this.statusOfMachine.textContent = `Machine status: ${this.totalMoney} zł`;
     }
 
     payMoney() {
@@ -256,20 +271,21 @@ class Machine {
                         this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
 
                     } else if (this.totalMoneyToPay < this.addedMoneyValue) {
-                        let change = this.addedMoneyValue - this.totalMoneyToPay;
+                        let change = (this.addedMoneyValue - this.totalMoneyToPay).toFixed(2);
+                        console.log(change)
                         alert(`Change: ${change}`);
                         const arrayToCheck = this.startMoney.reverse()
-                        
                         let i = 0;
                         while (change != 0) {
                             if (i >= 0 && i < arrayToCheck.length) {
                                 if (arrayToCheck[i].worth <= change) {
-                                    change -= arrayToCheck[i].worth;
-                                    arrayToCheck[i].number--;   
+                                    console.log(arrayToCheck[i].worth)
+                                    change = (change - arrayToCheck[i].worth).toFixed(2);
+                                    arrayToCheck[i].number--;
                                 } else {
                                     i++;
                                 }
-                                
+
                             }
                         }
 
@@ -279,7 +295,7 @@ class Machine {
                         })
                         this.addedMoneyValue = "0";
                         this.addedMoneyInput.textContent = `Added money: ${this.addedMoneyValue} zł`;
-                        
+
                         this.chosenTickets = [];
                         this.id = 0;
                         var child = this.inputTickets.lastElementChild;
@@ -293,9 +309,9 @@ class Machine {
                         console.log(this.startMoney)
                         console.log(arrayToCheck)
 
-                        /*this.startMoney.reverse();
+                        this.startMoney.reverse();
                         this.NumberTab = [];
-                        this.chartPie();*/
+                        this.chartPie();
 
                     }
 
