@@ -26,8 +26,17 @@ class Language {
         let moneyTitle = 'Jakie monety checesz dodać: '
         let moneyPlaceholder = 'Ilośc monet'
         let depositButton = 'Wpłać'
+        let alertPay1 = "Musisz zapłacić "
+        let alertPay2 = "Dziękujemy za skorzystanie z naszych usług :)"
+        let alertPay3 = "Reszta: "
+        let alertPay4 = "Najpierw wybierz bilet"
+        let alertPay5 = "Najpierw dodaj pieniądze"
+        let alertRefund1 = "Zwrócone pieniądze: "
+        let alertRefund2 = "Najpierw dodaj pieniądze"
+        let alertClear = "Brak elementów do usunięcia"
+        let alertShowStatus = "Status (ilość) dodaych pieniędzy: "
 
-        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton]
+        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton, alertPay1, alertPay2, alertPay3, alertPay4, alertPay5, alertRefund1, alertRefund2, alertClear, alertShowStatus]
     }
 
     englishLang() {
@@ -52,9 +61,18 @@ class Language {
         let moneyTitle = 'What coins do you want to add: '
         let moneyPlaceholder = 'Amount of coins'
         let depositButton = 'Deposit'
+        let alertPay1 = "You have to pay "
+        let alertPay2 = "Thanks for using the servies :) "
+        let alertPay3 = "Change: "
+        let alertPay4 = "Choose ticket first"
+        let alertPay5 = "Add money at first"
+        let alertRefund1 = "Refunded money: "
+        let alertRefund2 = "At first add money"
+        let alertClear = "No items to clear"
+        let alertShowStatus = "Status added money: "
 
-        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton]
-    
+        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton, alertPay1, alertPay2, alertPay3, alertPay4, alertPay5, alertRefund1, alertRefund2, alertClear, alertShowStatus]
+
     }
 }
 

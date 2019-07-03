@@ -108,41 +108,46 @@
   position: relative;
   border: 1px solid black;
   border-top: none;
+  overflow: hidden;
 }
 
 .status__title {
   font-weight: normal;
   font-size: 18px;
   text-align: center;
-  margin: 10px;
+  margin: 10px 10px 5px 10px;
 }
 
 .status__chart {
-  height: 300px;
-  overflow: hidden;
-  width: 100px;
+  position: relative;
+  margin: auto;
+  height: 280px;
+  width: 80vw;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .status__chart .myChart {
   width: 100%;
 }
 
+.status__added-money {
+  text-align: center;
+}
+
 .status__button {
   position: absolute;
   padding: 5px;
-  bottom: 20px;
+  bottom: 10px;
   color: white;
   background-color: black;
   border: 1px solid white;
 }
 
-.status__button--main {
-  left: 10%;
-}
-
 .status__button--added {
-  right: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .machine {
@@ -151,6 +156,8 @@
   background-color: yellow;
   border: 1px solid black;
   border-top: none;
+  height: 400px;
+  position: relative;
 }
 
 .machine__title {
@@ -161,7 +168,9 @@
 }
 
 .machine__input {
-  height: 300px;
+  height: 250px;
+  width: 90vw;
+  margin: 0 auto;
   overflow: hidden;
   overflow: auto;
   background-color: white;
@@ -190,10 +199,14 @@
 
 .machine__ticket-value {
   position: absolute;
+  left: 5%;
+  top: 75%;
 }
 
 .machine__money-added {
   position: absolute;
+  left: 5%;
+  top: 80%;
 }
 
 .machine__wrapper {
@@ -210,7 +223,7 @@
   -ms-flex-preferred-size: 25%;
       flex-basis: 25%;
   padding: 2px;
-  margin: 0px 2px 10px 2px;
+  margin: 50px 2px 10px 2px;
   border: 1px solid white;
   background-color: black;
   color: white;
@@ -294,6 +307,14 @@
   .tickets__items__image {
     height: 100px;
   }
+  .machine__ticket-value {
+    left: 15%;
+    top: 75%;
+  }
+  .machine__money-added {
+    top: 75%;
+    left: 60%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -338,11 +359,8 @@
     margin: 0 auto;
     height: 70%;
   }
-  .wrapper .status__button--main {
-    left: 5%;
-  }
-  .wrapper .status__button--added {
-    right: 5%;
+  .wrapper .status__added-money {
+    margin-top: 10px;
   }
   .wrapper .machine {
     -ms-flex-preferred-size: 50%;
@@ -359,17 +377,19 @@
     height: 80%;
   }
   .wrapper .machine__money-added {
-    bottom: 14%;
+    top: 80%;
     left: 62%;
   }
   .wrapper .machine__ticket-value {
-    bottom: 20%;
+    top: 86%;
     left: 62%;
   }
   .wrapper .machine__wrapper {
     position: absolute;
     top: 50%;
     right: 160px;
+    height: 60%;
+    overflow: hidden;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
     -webkit-box-orient: vertical;
@@ -379,6 +399,7 @@
   }
   .wrapper .machine__wrapper .machine__button {
     padding: 10px;
+    margin: 10px 2px;
   }
   .wrapper .money {
     -ms-flex-preferred-size: 50%;
@@ -388,10 +409,12 @@
   }
   .wrapper .money__wrapper {
     margin: 25px 0px 5px 0;
+    height: 250px;
   }
   .wrapper .money__button {
     padding: 10px;
     margin-bottom: 0;
+    margin-top: 10px;
   }
 }
 /*# sourceMappingURL=style.css.map */

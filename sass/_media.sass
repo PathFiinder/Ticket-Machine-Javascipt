@@ -12,6 +12,14 @@
         &__items
             &__image
                 height: 100px
+    
+    .machine
+        &__ticket-value
+            left: 15%
+            top: 75%
+        &__money-added
+            top: 75%
+            left: 60% 
                
 @media (min-width: 1024px)
     .tickets
@@ -50,11 +58,8 @@
                     width: 80%
                     margin: 0 auto
                     height: 70%
-                &__button
-                    &--main
-                        left: 5%
-                    &--added    
-                        right: 5%
+                &__added-money
+                    margin-top: 10px
 
             .machine
                 flex-basis: 50%
@@ -68,19 +73,22 @@
                     margin-top: 20px
                     height: 80%
                 &__money-added
-                    bottom: 14%
+                    top: 80%
                     left: 62%
                 &__ticket-value
-                    bottom: 20%
+                    top: 86%
                     left: 62%    
                 &__wrapper
                     position: absolute
                     top: 50%
                     right: 160px
+                    height: 60%
+                    overflow: hidden
                     transform: translateY(-50%)
                     flex-direction: column
                     .machine__button  
                         padding: 10px
+                        margin: 10px 2px
 
             .money
                 flex-basis: 50%
@@ -88,6 +96,9 @@
                 overflow: hidden
                 &__wrapper
                     margin: 25px 0px 5px 0
+                    height: 250px
+                    
                 &__button
                     padding: 10px
                     margin-bottom: 0
+                    margin-top: 10px
