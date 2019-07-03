@@ -34,7 +34,8 @@ class Machine {
         this.startMoney = [];
         this.NumberTab = [];
         this.singleTicket;
-        
+        this.counterActive = 0;
+
 
         this.addTicket();
         this.deleteTicket();
@@ -150,9 +151,9 @@ class Machine {
         this.inputTickets.addEventListener('click', (event) => {
 
             if (event.target.dataset.input) {
-                document.querySelector(`[data-input = "${event.target.dataset.input}"]`).classList.add('machine__input__item--active');
+                document.querySelector(`[data-input = "${event.target.dataset.input}"]`).classList.toggle('machine__input__item--active');
                 this.singleTicket = event.target.dataset.input;
-                
+
             }
         })
     }
@@ -162,43 +163,51 @@ class Machine {
         this.counter = 0;
         this.deleteTicketButton.addEventListener('click', () => {
 
-            let counterActive = 0;
+
             [...document.querySelectorAll('[data-input]')].forEach((element) => {
                 if (element.classList.contains('machine__input__item--active')) {
-                    counterActive++;
+                    this.counterActive++;
+                    console.log(this.counterActive)
                 }
             })
 
-            
-                if (counterActive == 1) {
-                    if (this.singleTicket != undefined && this.singleTicket != null) {
-                        this.chosenTickets.forEach((element) => {
-                            if (this.chosenTickets.length != 0 && element != "deleted") {
-                                if (element.id == this.singleTicket) {
-                                    this.counter++;
-                                    this.chosenTickets.splice(this.singleTicket, 1, "deleted");
-                                    document.querySelector(`[data-aside_id = "${this.singleTicket}"]`).remove();
-                                    this.totalMoneyToPay -= Number(Number(element.value)).toFixed(2);
-                                    if (this.totalMoneyToPay == 0) {
-                                        this.totalMoneyToPay = 0;
-                                    }
-                                    this.ticketsValue.textContent = `${this.machineTicketsValueText} ${(this.totalMoneyToPay).toFixed(2)} zł`
-                                }
 
-                                if (this.counter == this.chosenTickets.length) {
-                                    this.chosenTickets = [];
-                                    this.counter = 0;
-                                    this.id = 0;
+            if (this.counterActive == 1) {
+                if (this.singleTicket != undefined && this.singleTicket != null) {
+                    this.chosenTickets.forEach((element) => {
+                        if (this.chosenTickets.length != 0 && element != "deleted") {
+                            if (element.id == this.singleTicket) {
+                                this.counter++;
+                                this.chosenTickets.splice(this.singleTicket, 1, "deleted");
+                                document.querySelector(`[data-aside_id = "${this.singleTicket}"]`).remove();
+                                this.totalMoneyToPay -= Number(Number(element.value)).toFixed(2);
+                                if (this.totalMoneyToPay == 0) {
+                                    this.totalMoneyToPay = 0;
                                 }
+                                this.ticketsValue.textContent = `${this.machineTicketsValueText} ${(this.totalMoneyToPay).toFixed(2)} zł`
                             }
-                        })
-                    } else {
-                        alert("Choose ticket to remove");
-                    }
+
+                            if (this.counter == this.chosenTickets.length) {
+                                this.chosenTickets = [];
+                                this.counter = 0;
+                                this.id = 0;
+                            }
+                            this.counterActive = 0
+                        }
+                    })
                 } else {
-                    alert("Choose one ticket to delete")
+                    alert("Choose ticket to remove");
                 }
-            
+            } else {
+                alert("Choose one ticket to delete")
+                this.counterActive = 0
+                Array.from(document.querySelectorAll("[data-input")).forEach((element) => {
+                    if (element.classList.contains('machine__input__item--active')) {
+                        element.classList.remove('machine__input__item--active');
+                    }
+                })
+            }
+
 
 
             console.log(this.chosenTickets);
