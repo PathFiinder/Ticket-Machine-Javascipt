@@ -29,6 +29,7 @@
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   position: relative;
+  background-color: dodgerblue;
 }
 
 .main__title {
@@ -71,6 +72,7 @@
   text-align: center;
   border: 1px solid black;
   border-top: none;
+  background-color: dodgerblue;
 }
 
 .tickets__title {
@@ -109,6 +111,7 @@
   border: 1px solid black;
   border-top: none;
   overflow: hidden;
+  background-color: dodgerblue;
 }
 
 .status__title {
@@ -153,11 +156,11 @@
 .machine {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
-  background-color: yellow;
   border: 1px solid black;
   border-top: none;
   height: 400px;
   position: relative;
+  background-color: dodgerblue;
 }
 
 .machine__title {
@@ -235,6 +238,7 @@
   text-align: center;
   border: 1px solid black;
   border-top: none;
+  background-color: dodgerblue;
 }
 
 .money__title {
@@ -274,6 +278,7 @@
       flex-basis: 30%;
   text-align: center;
   line-height: 30px;
+  background-color: darkgreen;
 }
 
 .money__wrapper .money__item__input {
@@ -345,6 +350,9 @@
         flex-basis: 50%;
     height: 48vh;
     border-right: none;
+  }
+  .wrapper .tickets__title {
+    margin: 10px 0px 20px 0px;
   }
   .wrapper .tickets__items__image--penultimate-child, .wrapper .tickets__items__image--last-child, .wrapper .tickets__items__image:nth-of-type(9) {
     margin: 0 auto;

@@ -34,6 +34,7 @@ class Machine {
         this.startMoney = [];
         this.NumberTab = [];
         this.singleTicket;
+        
 
         this.addTicket();
         this.deleteTicket();
@@ -118,7 +119,7 @@ class Machine {
 
             this.inputTicket(ticketName, ticketValue);
             this.totalMoneyToPay += Number(Number(ticketValue).toFixed(2));
-            this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
+            this.ticketsValue.textContent = `${this.machineTicketsValueText} ${(this.totalMoneyToPay).toFixed(2)} zł`
             this.id++;
         })
     }
@@ -151,6 +152,7 @@ class Machine {
             if (event.target.dataset.input) {
                 document.querySelector(`[data-input = "${event.target.dataset.input}"]`).classList.add('machine__input__item--active');
                 this.singleTicket = event.target.dataset.input;
+                
             }
         })
     }
@@ -167,31 +169,36 @@ class Machine {
                 }
             })
 
-            if (counterActive == 1) {
-                if (this.singleTicket != undefined && this.singleTicket != null) {
-                    this.chosenTickets.forEach((element) => {
-                        if (this.chosenTickets.length != 0 && element != "deleted") {
-                            if (element.id == this.singleTicket) {
-                                this.counter++;
-                                this.chosenTickets.splice(this.singleTicket, 1, "deleted");
-                                document.querySelector(`[data-aside_id = "${this.singleTicket}"]`).remove();
-                                this.totalMoneyToPay -= Number(element.value);
-                                this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
-                            }
+            
+                if (counterActive == 1) {
+                    if (this.singleTicket != undefined && this.singleTicket != null) {
+                        this.chosenTickets.forEach((element) => {
+                            if (this.chosenTickets.length != 0 && element != "deleted") {
+                                if (element.id == this.singleTicket) {
+                                    this.counter++;
+                                    this.chosenTickets.splice(this.singleTicket, 1, "deleted");
+                                    document.querySelector(`[data-aside_id = "${this.singleTicket}"]`).remove();
+                                    this.totalMoneyToPay -= Number(Number(element.value)).toFixed(2);
+                                    if (this.totalMoneyToPay == 0) {
+                                        this.totalMoneyToPay = 0;
+                                    }
+                                    this.ticketsValue.textContent = `${this.machineTicketsValueText} ${(this.totalMoneyToPay).toFixed(2)} zł`
+                                }
 
-                            if (this.counter == this.chosenTickets.length) {
-                                this.chosenTickets = [];
-                                this.counter = 0;
-                                this.id = 0;
+                                if (this.counter == this.chosenTickets.length) {
+                                    this.chosenTickets = [];
+                                    this.counter = 0;
+                                    this.id = 0;
+                                }
                             }
-                        }
-                    })
+                        })
+                    } else {
+                        alert("Choose ticket to remove");
+                    }
                 } else {
-                    alert("Choose ticket to remove");
+                    alert("Choose one ticket to delete")
                 }
-            } else {
-                alert("Choose one ticket to delete")
-            }
+            
 
 
             console.log(this.chosenTickets);
