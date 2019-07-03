@@ -1,6 +1,8 @@
 import Ticket from './Ticket.js'
 import Money from './Money.js'
 import ChartClass from './Chart.js'
+import Language from './Language.js'
+
 class Machine {
 
     constructor() {
@@ -16,6 +18,15 @@ class Machine {
         this.refundButton = document.querySelector('[data-name = "refund"]')
         this.showStatusButton = document.querySelector('.status__button--added');
         this.statusOfMachine = document.querySelector('.status__added-money');
+        this.plButton = document.querySelector('.main__translation--pl');
+        this.engButton = document.querySelector('.main__translation--eng');
+        this.mainTitleText = document.querySelector('.main__title');
+        this.ticketTitleText = document.querySelector('.tickets__title');
+        this.statusTitleText = document.querySelector('.status__title');
+        this.machineTitleText = document.querySelector('.machine__title');
+        this.moneyTitleText = document.querySelector('.money__title');
+        this.moneyPlaceholderText = document.querySelectorAll('.money__item__input');
+
 
         this.id = 0;
         this.ifAdded = false
@@ -62,9 +73,29 @@ class Machine {
         this.totalMoneyToPay = 0;
         this.payMoney();
         this.refundMoney();
+
+        this.ChartLabelsText1 = 'Number of 10 gr';
+        this.ChartLabelsText2 = 'Number of 20 gr';
+        this.ChartLabelsText3 = 'Number of 50 gr';
+        this.ChartLabelsText4 = 'Number of 1 zł';
+        this.ChartLabelsText5 = 'Number of 2 zł';
+        this.ChartLabelsText6 = 'Number of 5 zł';
+
+
         this.chartPie();
         this.showStatus();
+
+        this.statusMachineText = "Machine status: "
         this.statusMachine();
+        this.machineTicketsValueText = "Tickets value: "
+        this.ticketsValue.textContent = `${this.machineTicketsValueText} 0 zł`
+        this.machineAddedMoneyText = "Added money";
+
+
+        this.Lang = new Language();
+        this.polishTranslation();
+        this.englishTranslation();
+
     }
 
     addTicket() {
@@ -77,7 +108,7 @@ class Machine {
 
             this.inputTicket(ticketName, ticketValue);
             this.totalMoneyToPay += Number(Number(ticketValue).toFixed(2));
-            this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
+            this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
             this.id++;
         })
     }
@@ -96,7 +127,7 @@ class Machine {
 
         const itemSpanName = document.createElement('span');
         itemSpanName.classList.add('input__item__content--bold');
-        itemSpanName.textContent = `${ticketName} ${ticketValue} zl `;
+        itemSpanName.textContent = `${ticketName} ${ticketValue} zł `;
         document.querySelector(`[data-input = "${this.id}"]`).appendChild(itemSpanName)
 
 
@@ -135,7 +166,7 @@ class Machine {
                                 this.chosenTickets.splice(this.singleTicket, 1, "deleted");
                                 document.querySelector(`[data-aside_id = "${this.singleTicket}"]`).remove();
                                 this.totalMoneyToPay -= Number(element.value);
-                                this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
+                                this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
                             }
 
                             if (this.counter == this.chosenTickets.length) {
@@ -174,7 +205,7 @@ class Machine {
                     child = this.inputTickets.lastElementChild;
                 }
                 this.totalMoneyToPay = 0;
-                this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
+                this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
             } else if (this.chosenTickets.length == 0) {
                 alert("No items to clear")
             }
@@ -190,8 +221,8 @@ class Machine {
             this.NumberTab.push(element.number);
         })
 
-        PieChart.drawChart(this.NumberTab[0], this.NumberTab[1], this.NumberTab[2], this.NumberTab[3], this.NumberTab[4], this.NumberTab[5]);
-        
+        PieChart.drawChart(this.NumberTab[0], this.NumberTab[1], this.NumberTab[2], this.NumberTab[3], this.NumberTab[4], this.NumberTab[5], this.ChartLabelsText1, this.ChartLabelsText2, this.ChartLabelsText3, this.ChartLabelsText4, this.ChartLabelsText5, this.ChartLabelsText6);
+
         const money = new Money();
         this.totalMoney = money.computeValue(this.startMoney);
         this.statusMachine();
@@ -213,7 +244,7 @@ class Machine {
             this.addedMoneyValue = depositMoney.computeValue(this.moneyAdded);
             console.log(this.startMoney)
             console.log(this.moneyAdded)
-            this.addedMoneyInput.textContent = `Added money: ${this.addedMoneyValue} zł`;
+            this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
 
             for (let i = 0; i < this.moneyAdded.length; i++) {
                 document.getElementById(`${this.moneyAdded[i].name}`).value = ""
@@ -236,13 +267,13 @@ class Machine {
             0.50gr:  ${this.moneyAdded[2].number},
             1.00zł:  ${this.moneyAdded[3].number},
             2.00zł:  ${this.moneyAdded[4].number},
-            5.00zł:  ${this.moneyAdded[5].number},` 
+            5.00zł:  ${this.moneyAdded[5].number},`
             alert(txt)
         })
     }
 
-    statusMachine(){
-        this.statusOfMachine.textContent = `Machine status: ${this.totalMoney} zł`;
+    statusMachine() {
+        this.statusOfMachine.textContent = `${this.statusMachineText} ${this.totalMoney} zł`;
     }
 
     payMoney() {
@@ -258,7 +289,7 @@ class Machine {
                             element.number = 0
                         })
                         this.addedMoneyValue = "0";
-                        this.addedMoneyInput.textContent = `Added money: ${this.addedMoneyValue} zł`;
+                        this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
                         this.chartPie();
                         this.chosenTickets = [];
                         this.id = 0;
@@ -268,18 +299,20 @@ class Machine {
                             child = this.inputTickets.lastElementChild;
                         }
                         this.totalMoneyToPay = 0;
-                        this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
+                        this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
 
                     } else if (this.totalMoneyToPay < this.addedMoneyValue) {
                         let change = (this.addedMoneyValue - this.totalMoneyToPay).toFixed(2);
                         console.log(change)
                         alert(`Change: ${change}`);
                         const arrayToCheck = this.startMoney.reverse()
+
+
                         let i = 0;
                         while (change != 0) {
                             if (i >= 0 && i < arrayToCheck.length) {
                                 if (arrayToCheck[i].worth <= change) {
-                                    console.log(arrayToCheck[i].worth)
+                                    //console.log(arrayToCheck[i].worth)
                                     change = (change - arrayToCheck[i].worth).toFixed(2);
                                     arrayToCheck[i].number--;
                                 } else {
@@ -294,17 +327,18 @@ class Machine {
                             element.number = 0
                         })
                         this.addedMoneyValue = "0";
-                        this.addedMoneyInput.textContent = `Added money: ${this.addedMoneyValue} zł`;
+                        this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
 
                         this.chosenTickets = [];
                         this.id = 0;
                         var child = this.inputTickets.lastElementChild;
+
                         while (child) {
                             this.inputTickets.removeChild(child)
                             child = this.inputTickets.lastElementChild;
                         }
                         this.totalMoneyToPay = 0;
-                        this.ticketsValue.textContent = `Tickets value: ${this.totalMoneyToPay} zł`
+                        this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
 
                         console.log(this.startMoney)
                         console.log(arrayToCheck)
@@ -338,7 +372,7 @@ class Machine {
                 })
                 alert(`Refunded money: ${this.addedMoneyValue} zł`)
                 this.addedMoneyValue = "0";
-                this.addedMoneyInput.textContent = `Added money: ${this.addedMoneyValue} zł`;
+                this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
                 this.ifAdded = false;
                 this.NumberTab = [];
                 this.chartPie();
@@ -349,6 +383,78 @@ class Machine {
         })
     }
 
+    polishTranslation() {
+        this.plButton.addEventListener('click', () => {
+            this.plButton.classList.add('main__translation__item--active');
+            this.engButton.classList.remove('main__translation__item--active');
+            this.mainTitleText.textContent = this.Lang.polishLang()[0];
+            this.ticketTitleText.textContent = this.Lang.polishLang()[1];
+            this.statusTitleText.textContent = this.Lang.polishLang()[2];
+            this.ChartLabelsText1 = this.Lang.polishLang()[3];
+            this.ChartLabelsText2 = this.Lang.polishLang()[4];
+            this.ChartLabelsText3 = this.Lang.polishLang()[5];
+            this.ChartLabelsText4 = this.Lang.polishLang()[6];
+            this.ChartLabelsText5 = this.Lang.polishLang()[7];
+            this.ChartLabelsText6 = this.Lang.polishLang()[8];
+            this.statusMachineText = this.Lang.polishLang()[9];
+            this.showStatusButton.textContent = this.Lang.polishLang()[10];
+            this.machineTitleText.textContent = this.Lang.polishLang()[11];
+            this.deleteTicketButton.textContent = this.Lang.polishLang()[12];
+            this.clearAllButton.textContent = this.Lang.polishLang()[13];
+            this.payButton.textContent = this.Lang.polishLang()[14];
+            this.refundButton.textContent = this.Lang.polishLang()[15];
+            this.ticketsValue.textContent =  `${this.Lang.polishLang()[16]}: 0 zł `
+            this.machineTicketsValueText = this.Lang.polishLang()[16];
+            this.addedMoneyInput.textContent =  `${this.Lang.polishLang()[17]}: 0 zł `
+            this.machineAddedMoneyText = this.Lang.polishLang()[17];
+            this.moneyTitleText.textContent = this.Lang.polishLang()[18];
+
+            [...this.moneyPlaceholderText].forEach((element) => {
+                element.placeholder = this.Lang.polishLang()[19];
+            })
+
+            this.moneyInputButton.textContent = this.Lang.polishLang()[20];
+
+            this.chartPie();
+        })
+
+    }
+
+    englishTranslation() {
+        this.engButton.addEventListener('click', () => {
+            this.engButton.classList.add('main__translation__item--active');
+            this.plButton.classList.remove('main__translation__item--active');
+            this.mainTitleText.textContent = this.Lang.englishLang()[0];
+            this.ticketTitleText.textContent = this.Lang.englishLang()[1];
+            this.statusTitleText.textContent = this.Lang.englishLang()[2];
+            this.ChartLabelsText1 = this.Lang.englishLang()[3];
+            this.ChartLabelsText2 = this.Lang.englishLang()[4];
+            this.ChartLabelsText3 = this.Lang.englishLang()[5];
+            this.ChartLabelsText4 = this.Lang.englishLang()[6];
+            this.ChartLabelsText5 = this.Lang.englishLang()[7];
+            this.ChartLabelsText6 = this.Lang.englishLang()[8];
+            this.statusMachineText = this.Lang.englishLang(0)[9];
+            this.showStatusButton.textContent = this.Lang.englishLang()[10];
+            this.machineTitleText.textContent = this.Lang.englishLang()[11];
+            this.deleteTicketButton.textContent = this.Lang.englishLang()[12];
+            this.clearAllButton.textContent = this.Lang.englishLang()[13];
+            this.payButton.textContent = this.Lang.englishLang()[14];
+            this.refundButton.textContent = this.Lang.englishLang()[15];
+            this.ticketsValue.textContent =  `${this.Lang.englishLang()[16]}: 0 zł `
+            this.machineTicketsValueText = this.Lang.englishLang()[16];
+            this.addedMoneyInput.textContent =  `${this.Lang.englishLang()[17]}: 0 zł `
+            this.machineAddedMoneyText = this.Lang.englishLang()[17];
+            this.moneyTitleText.textContent = this.Lang.englishLang()[18];
+
+            [...this.moneyPlaceholderText].forEach((element) => {
+                element.placeholder = this.Lang.englishLang()[19];
+            })
+
+            this.moneyInputButton.textContent = this.Lang.englishLang()[20];
+
+            this.chartPie();
+        })
+    }
 }
 
 
