@@ -260,8 +260,8 @@
 
 .money__wrapper .money__item {
   width: 80%;
-  -ms-flex-preferred-size: 30px;
-      flex-basis: 30px;
+  -ms-flex-preferred-size: 16.67px;
+      flex-basis: 16.67px;
   margin: 0 auto 10px auto;
   border: 1px solid black;
   display: -webkit-box;
@@ -417,7 +417,11 @@
   }
   .wrapper .money__wrapper {
     margin: 25px 0px 5px 0;
-    height: 220px;
+    height: 250px;
+    overflow: hidden;
+  }
+  .wrapper .money__wrapper .money__item {
+    margin: 2px auto;
   }
   .wrapper .money__button {
     padding: 10px;
