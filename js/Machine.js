@@ -38,6 +38,9 @@ class Machine {
 
 
         this.addTicket();
+        this.alertDelete1 = "Choose ticket to remove";
+        this.alertDelete2 = "Choose ticket to remove";
+
         this.deleteTicket();
         this.clearAll();
 
@@ -196,10 +199,10 @@ class Machine {
                         }
                     })
                 } else {
-                    alert("Choose ticket to remove");
+                    alert(this.alertDelete1);
                 }
             } else {
-                alert("Choose one ticket to delete")
+                alert(this.alertDelete2)
                 this.counterActive = 0
                 Array.from(document.querySelectorAll("[data-input")).forEach((element) => {
                     if (element.classList.contains('machine__input__item--active')) {
@@ -449,6 +452,8 @@ class Machine {
             this.alertRefund2 = this.Lang.polishLang()[27];
             this.alertClear = this.Lang.polishLang()[28];
             this.alertShowStatus = this.Lang.polishLang()[29];
+            this.alertDelete1 = this.Lang.polishLang()[30];
+            this.alertDelete2 = this.Lang.polishLang()[31];
             this.chartPie();
         })
 
@@ -494,6 +499,8 @@ class Machine {
             this.alertRefund2 = this.Lang.englishLang()[27];
             this.alertClear = this.Lang.englishLang()[28];
             this.alertShowStatus = this.Lang.englishLang()[29];
+            this.alertDelete1 = this.Lang.englishLang()[30];
+            this.alertDelete2 = this.Lang.englishLang()[31];
 
             this.chartPie();
         })
