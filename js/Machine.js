@@ -49,6 +49,7 @@ class Machine {
         money.addMoney(this.startMoney, 10, 10, 10, 10, 10, 10);
         this.totalMoney = money.computeValue(this.startMoney);
 
+        this.alertAddMoney = "You have to insert number of coins at first"
         this.addMoney();
         this.moneyAdded = [{
             name: "10gr",
@@ -81,6 +82,7 @@ class Machine {
         this.alertPay3 = "Change: "
         this.alertPay4 = "Choose ticket first"
         this.alertPay5 = "Add money at first"
+        
         this.payMoney();
         this.alertRefund1 = "Refunded money: "
         this.alertRefund2 = "At first add money"
@@ -258,32 +260,45 @@ class Machine {
     }
 
     addMoney() {
+        let ifEmpty = true
         this.moneyInputButton.addEventListener('click', () => {
 
-            this.moneyAdded.forEach((element, index) => {
-                let value = document.getElementById(`${element.name}`).value;
-                if (value == '') {
-                    value = 0
+            [...document.querySelectorAll('.money__item__input')].forEach(element => {
+                if (element.value != "") {
+                    ifEmpty = false;
                 }
-                this.startMoney[index].number += Number(value);
-                element.number += Number(value);
-
             })
-            const depositMoney = new Money();
-            this.addedMoneyValue = depositMoney.computeValue(this.moneyAdded);
-            console.log(this.startMoney)
-            console.log(this.moneyAdded)
-            this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
 
-            for (let i = 0; i < this.moneyAdded.length; i++) {
-                document.getElementById(`${this.moneyAdded[i].name}`).value = ""
+            if (ifEmpty == false) {
+                this.moneyAdded.forEach((element, index) => {
+                    let value = document.getElementById(`${element.name}`).value;
+                    if (value == '') {
+                        value = 0
+                    }
+                    this.startMoney[index].number += Number(value);
+                    element.number += Number(value);
+
+                })
+                const depositMoney = new Money();
+                this.addedMoneyValue = depositMoney.computeValue(this.moneyAdded);
+                console.log(this.startMoney)
+                console.log(this.moneyAdded)
+                this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
+
+                for (let i = 0; i < this.moneyAdded.length; i++) {
+                    document.getElementById(`${this.moneyAdded[i].name}`).value = ""
+                }
+
+                this.NumberTab = [];
+                this.chartPie();
+                this.ifAdded = true;
+                ifEmpty = true;
+            } else {
+                alert(this.alertAddMoney);
             }
 
-            this.NumberTab = [];
-            this.chartPie();
-            this.ifAdded = true;
-
         })
+
 
 
     }
@@ -454,6 +469,7 @@ class Machine {
             this.alertShowStatus = this.Lang.polishLang()[29];
             this.alertDelete1 = this.Lang.polishLang()[30];
             this.alertDelete2 = this.Lang.polishLang()[31];
+            this.alertAddMoney = this.Lang.polishLang()[32];
             this.chartPie();
         })
 
@@ -501,7 +517,8 @@ class Machine {
             this.alertShowStatus = this.Lang.englishLang()[29];
             this.alertDelete1 = this.Lang.englishLang()[30];
             this.alertDelete2 = this.Lang.englishLang()[31];
-
+            this.alertAddMoney = this.Lang.englishLang()[32];
+            
             this.chartPie();
         })
     }

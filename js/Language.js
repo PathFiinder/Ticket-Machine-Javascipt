@@ -37,7 +37,9 @@ class Language {
         let alertShowStatus = "Status (ilość) dodaych pieniędzy: "
         let alertDelete1 = "Wybierz bilet do usunięcia"
         let alertDelete2 = "Wybierz jeden bilet do usunięcia"
-        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton, alertPay1, alertPay2, alertPay3, alertPay4, alertPay5, alertRefund1, alertRefund2, alertClear, alertShowStatus,alertDelete1,alertDelete2]
+        let alertAddMoney = "Najpierw musisz wrowadzić ilość monet"
+
+        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton, alertPay1, alertPay2, alertPay3, alertPay4, alertPay5, alertRefund1, alertRefund2, alertClear, alertShowStatus,alertDelete1,alertDelete2,alertAddMoney]
     }
 
     englishLang() {
@@ -73,8 +75,9 @@ class Language {
         let alertShowStatus = "Status added money: "
         let alertDelete1 = "Choose ticket to remove";
         let alertDelete2 = "Choose ticket to remove";
+        let alertAddMoney = "You have to insert number of coins at first"
 
-        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton, alertPay1, alertPay2, alertPay3, alertPay4, alertPay5, alertRefund1, alertRefund2, alertClear, alertShowStatus,alertDelete1,alertDelete2]
+        return [mainTitle, ticketsTitle, machineStatusTitle, chartLabel1Text, chartLabel2Text, chartLabel3Text, chartLabel4Text, chartLabel5Text, chartLabel6Text, machineStatusText, statusButtonAdded, machineTitle, deleteButton, clearButton, payButton, refundButton, ticketValueName, addedMoneyName, moneyTitle, moneyPlaceholder, depositButton, alertPay1, alertPay2, alertPay3, alertPay4, alertPay5, alertRefund1, alertRefund2, alertClear, alertShowStatus,alertDelete1,alertDelete2,alertAddMoney]
 
     }
 }
