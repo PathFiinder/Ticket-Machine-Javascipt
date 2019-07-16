@@ -6,7 +6,7 @@ import Language from './Language.js'
 class Machine {
 
     constructor() {
-        this.ticketItem = document.querySelector('.tickets__items');
+        this.ticketItem = document.querySelector('.tickets__list');
         this.inputTickets = document.querySelector('.machine__input')
         this.clearAllButton = document.querySelector('[data-name = "clear"');
         this.deleteTicketButton = document.querySelector('[data-name = "delete"]');
@@ -18,14 +18,14 @@ class Machine {
         this.refundButton = document.querySelector('[data-name = "refund"]')
         this.showStatusButton = document.querySelector('.status__button--added');
         this.statusOfMachine = document.querySelector('.status__added-money');
-        this.plButton = document.querySelector('.main__translation--pl');
-        this.engButton = document.querySelector('.main__translation--eng');
+        this.plButton = document.querySelector('.main__item--pl');
+        this.engButton = document.querySelector('.main__item--eng');
         this.mainTitleText = document.querySelector('.main__title');
         this.ticketTitleText = document.querySelector('.tickets__title');
         this.statusTitleText = document.querySelector('.status__title');
         this.machineTitleText = document.querySelector('.machine__title');
         this.moneyTitleText = document.querySelector('.money__title');
-        this.moneyPlaceholderText = document.querySelectorAll('.money__item__input');
+        this.moneyPlaceholderText = document.querySelectorAll('.money__input');
 
 
         this.id = 0;
@@ -132,18 +132,18 @@ class Machine {
 
     inputTicket(ticketName, ticketValue) {
         const singleAside = document.createElement('aside');
-        singleAside.classList.add('machine__input__item');
+        singleAside.classList.add('machine__item');
         singleAside.dataset.aside_id = this.id;
         this.inputTickets.appendChild(singleAside);
 
         const inputItem = document.createElement('p');
-        inputItem.classList.add('input__item__content');
+        inputItem.classList.add('machine__content');
         inputItem.dataset.input = this.id;
         inputItem.textContent = 'Ticket: ';
         document.querySelector(`[data-aside_id = "${this.id}"]`).appendChild(inputItem);
 
         const itemSpanName = document.createElement('span');
-        itemSpanName.classList.add('input__item__content--bold');
+        itemSpanName.classList.add('machine__content--bold');
         itemSpanName.textContent = `${ticketName} ${ticketValue} zł `;
         document.querySelector(`[data-input = "${this.id}"]`).appendChild(itemSpanName)
 
@@ -156,7 +156,7 @@ class Machine {
         this.inputTickets.addEventListener('click', (event) => {
 
             if (event.target.dataset.input) {
-                document.querySelector(`[data-input = "${event.target.dataset.input}"]`).classList.toggle('machine__input__item--active');
+                document.querySelector(`[data-input = "${event.target.dataset.input}"]`).classList.toggle('machine__item--active');
                 this.singleTicket = event.target.dataset.input;
 
             }
@@ -170,9 +170,9 @@ class Machine {
 
 
             [...document.querySelectorAll('[data-input]')].forEach((element) => {
-                if (element.classList.contains('machine__input__item--active')) {
+                if (element.classList.contains('machine__item--active')) {
                     this.counterActive++;
-                    console.log(this.counterActive)
+                    
                 }
             })
 
@@ -207,15 +207,15 @@ class Machine {
                 alert(this.alertDelete2)
                 this.counterActive = 0
                 Array.from(document.querySelectorAll("[data-input")).forEach((element) => {
-                    if (element.classList.contains('machine__input__item--active')) {
-                        element.classList.remove('machine__input__item--active');
+                    if (element.classList.contains('machine__item--active')) {
+                        element.classList.remove('machine__item--active');
                     }
                 })
             }
 
 
 
-            console.log(this.chosenTickets);
+            
 
 
 
@@ -229,8 +229,8 @@ class Machine {
             if (this.chosenTickets.length > 0) {
                 this.chosenTickets = [];
                 this.id = 0;
-                console.log(this.chosenTickets);
-                var child = this.inputTickets.lastElementChild;
+                
+                let child = this.inputTickets.lastElementChild;
                 while (child) {
                     this.inputTickets.removeChild(child)
                     child = this.inputTickets.lastElementChild;
@@ -263,7 +263,7 @@ class Machine {
         let ifEmpty = true
         this.moneyInputButton.addEventListener('click', () => {
 
-            [...document.querySelectorAll('.money__item__input')].forEach(element => {
+            [...document.querySelectorAll('.money__input')].forEach(element => {
                 if (element.value != "") {
                     ifEmpty = false;
                 }
@@ -281,8 +281,7 @@ class Machine {
                 })
                 const depositMoney = new Money();
                 this.addedMoneyValue = depositMoney.computeValue(this.moneyAdded);
-                console.log(this.startMoney)
-                console.log(this.moneyAdded)
+                
                 this.addedMoneyInput.textContent = `${this.machineAddedMoneyText} ${this.addedMoneyValue} zł`;
 
                 for (let i = 0; i < this.moneyAdded.length; i++) {
@@ -325,7 +324,7 @@ class Machine {
             if (this.ifAdded == true) {
                 if (this.chosenTickets.length != 0) {
                     if (this.totalMoneyToPay > this.addedMoneyValue) {
-                        alert(`${this.alertPay1} ${(this.totalMoneyToPay - this.addedMoneyValue).toFixed(2)} zł`)
+                        alert(`${this.alertPay1} ${(this.totalMoneyToPay - this.addedMoneyValue).toFixed(2)} zł more`)
                     } else if (this.totalMoneyToPay == this.addedMoneyValue) {
                         alert(`${this.alertPay2}`);
                         this.ifAdded = false;
@@ -347,7 +346,7 @@ class Machine {
 
                     } else if (this.totalMoneyToPay < this.addedMoneyValue) {
                         let change = (this.addedMoneyValue - this.totalMoneyToPay).toFixed(2);
-                        console.log(change)
+                        
                         alert(`${this.alertPay3} ${change}`);
                         const arrayToCheck = this.startMoney.reverse()
 
@@ -356,7 +355,7 @@ class Machine {
                         while (change != 0) {
                             if (i >= 0 && i < arrayToCheck.length) {
                                 if (arrayToCheck[i].worth <= change) {
-                                    //console.log(arrayToCheck[i].worth)
+                                    
                                     change = (change - arrayToCheck[i].worth).toFixed(2);
                                     arrayToCheck[i].number--;
                                 } else {
@@ -384,8 +383,7 @@ class Machine {
                         this.totalMoneyToPay = 0;
                         this.ticketsValue.textContent = `${this.machineTicketsValueText} ${this.totalMoneyToPay} zł`
 
-                        console.log(this.startMoney)
-                        console.log(arrayToCheck)
+                       
 
                         this.startMoney.reverse();
                         this.NumberTab = [];
@@ -397,7 +395,7 @@ class Machine {
 
 
 
-                    //this.ifAdded = false;
+                 
                 } else {
                     alert(`${this.alertPay4}`)
                 }
@@ -429,8 +427,8 @@ class Machine {
 
     polishTranslation() {
         this.plButton.addEventListener('click', () => {
-            this.plButton.classList.add('main__translation__item--active');
-            this.engButton.classList.remove('main__translation__item--active');
+            this.plButton.classList.add('main__item--active');
+            this.engButton.classList.remove('main__item--active');
             this.mainTitleText.textContent = this.Lang.polishLang()[0];
             this.ticketTitleText.textContent = this.Lang.polishLang()[1];
             this.statusTitleText.textContent = this.Lang.polishLang()[2];
@@ -477,8 +475,8 @@ class Machine {
 
     englishTranslation() {
         this.engButton.addEventListener('click', () => {
-            this.engButton.classList.add('main__translation__item--active');
-            this.plButton.classList.remove('main__translation__item--active');
+            this.engButton.classList.add('main__item--active');
+            this.plButton.classList.remove('main__item--active');
             this.mainTitleText.textContent = this.Lang.englishLang()[0];
             this.ticketTitleText.textContent = this.Lang.englishLang()[1];
             this.statusTitleText.textContent = this.Lang.englishLang()[2];

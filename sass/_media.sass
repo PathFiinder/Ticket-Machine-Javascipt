@@ -1,7 +1,7 @@
 @media (min-width: 568px)
     .tickets
-        &__items
-            &__image
+        &__list
+            .tickets__item
                 width: 33.33%
                 padding: 5px
                 &--penultimate-child
@@ -9,8 +9,8 @@
 
 @media (min-width: 736px)
     .tickets
-        &__items
-            &__image
+        &__list
+            .tickets__item
                 height: 100px
     
     .machine
@@ -23,8 +23,8 @@
                
 @media (min-width: 1024px)
     .tickets
-        &__items
-            &__image
+        &__list
+            .tickets__item
                 width: 25%
                 &--penultimate-child,&--last-child
                     margin: 0
@@ -48,8 +48,8 @@
                 border-right: none 
                 &__title
                     margin: 10px 0px 20px 0px
-                &__items
-                    &__image
+                &__list
+                    .tickets__item
                         &--penultimate-child,&--last-child,&:nth-of-type(9)
                             margin: 0 auto
 

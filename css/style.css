@@ -45,7 +45,7 @@
   margin: 5px auto 0px auto;
 }
 
-.main__translation__item {
+.main__translation .main__item {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   border: 1px solid white;
@@ -53,15 +53,15 @@
   color: white;
 }
 
-.main__translation__item--active {
+.main__translation .main__item--active {
   color: orange;
 }
 
-.main__translation--pl {
+.main__translation .main__item--pl {
   margin-right: 5%;
 }
 
-.main__translation--eng {
+.main__translation .main__item--eng {
   margin-left: 5%;
 }
 
@@ -81,7 +81,7 @@
   margin: 5px;
 }
 
-.tickets__items {
+.tickets__list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -94,12 +94,12 @@
   margin-bottom: 20px;
 }
 
-.tickets__items__image {
+.tickets__list .tickets__item {
   width: 50%;
   padding: 2px;
 }
 
-.tickets__items__image--last-child {
+.tickets__list .tickets__item--last-child {
   margin: 0 auto;
 }
 
@@ -181,21 +181,21 @@
   border: 1px solid black;
 }
 
-.machine__input__item {
+.machine__input .machine__item {
   width: 96%;
   border: 1px solid black;
   margin: 5px auto;
 }
 
-.machine__input__item .input__item__content {
+.machine__input .machine__item .machine__content {
   font-size: 18px;
 }
 
-.machine__input__item .input__item__content--bold {
+.machine__input .machine__item .machine__content--bold {
   font-size: 15px;
 }
 
-.machine__input__item--active {
+.machine__input .machine__item--active {
   background-color: blue;
   color: white;
 }
@@ -260,8 +260,7 @@
 
 .money__wrapper .money__item {
   width: 80%;
-  -ms-flex-preferred-size: 16.67px;
-      flex-basis: 16.67px;
+  height: 16.67%;
   margin: 0 auto 10px auto;
   border: 1px solid black;
   display: -webkit-box;
@@ -273,7 +272,7 @@
           flex-direction: row;
 }
 
-.money__wrapper .money__item__label {
+.money__wrapper .money__item .money__label {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
   text-align: center;
@@ -281,7 +280,7 @@
   background-color: darkgreen;
 }
 
-.money__wrapper .money__item__input {
+.money__wrapper .money__item .money__input {
   -ms-flex-preferred-size: 70%;
       flex-basis: 70%;
   border: none;
@@ -299,17 +298,17 @@
 }
 
 @media (min-width: 568px) {
-  .tickets__items__image {
+  .tickets__list .tickets__item {
     width: 33.33%;
     padding: 5px;
   }
-  .tickets__items__image--penultimate-child {
+  .tickets__list .tickets__item--penultimate-child {
     margin: 0 auto;
   }
 }
 
 @media (min-width: 736px) {
-  .tickets__items__image {
+  .tickets__list .tickets__item {
     height: 100px;
   }
   .machine__ticket-value {
@@ -323,10 +322,10 @@
 }
 
 @media (min-width: 1024px) {
-  .tickets__items__image {
+  .tickets__list .tickets__item {
     width: 25%;
   }
-  .tickets__items__image--penultimate-child, .tickets__items__image--last-child {
+  .tickets__list .tickets__item--penultimate-child, .tickets__list .tickets__item--last-child {
     margin: 0;
   }
 }
@@ -354,7 +353,7 @@
   .wrapper .tickets__title {
     margin: 10px 0px 20px 0px;
   }
-  .wrapper .tickets__items__image--penultimate-child, .wrapper .tickets__items__image--last-child, .wrapper .tickets__items__image:nth-of-type(9) {
+  .wrapper .tickets__list .tickets__item--penultimate-child, .wrapper .tickets__list .tickets__item--last-child, .wrapper .tickets__list .tickets__item:nth-of-type(9) {
     margin: 0 auto;
   }
   .wrapper .status {
