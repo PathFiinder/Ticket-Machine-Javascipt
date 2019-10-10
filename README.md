@@ -1,4 +1,5 @@
 # Ticket-Machine-Javascipt
+App is an implementation of ticket machine used in public transport in Cracow. It let user to choose ticekts, add money and get the change. 
 
 Tech Work used:
 
